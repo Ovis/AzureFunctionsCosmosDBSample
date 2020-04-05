@@ -32,6 +32,13 @@ namespace AzureCosmosDbFunc.Application
                         .WithApplicationRegion(Regions.JapanEast)
                         .WithBulkExecution(true)
                         .WithConnectionModeDirect()
+                        .WithSerializerOptions(
+                            new CosmosSerializationOptions
+                            {
+                                IgnoreNullValues = true,
+                                Indented = false,
+                                PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
+                            })
                         .Build();
                 });
         }
